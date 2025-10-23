@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSE Internship Opportunities</title>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #0047ab;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: #0047ab;
+    }
+
+    button {
+      background-color: #0047ab;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #002f73;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    💻 Internship Opportunities for CSE Students
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h3>Web Development Internship</h3>
+      <p>Learn HTML, CSS, JavaScript & React.js by building real-world projects.</p>
+      <button onclick="showInfo('Web Development Internship')">More Info</button>
+    </div>
+
+    <div class="card">
+      <h3>AI & Machine Learning Internship</h3>
+      <p>Hands-on experience with Python, TensorFlow, and data analysis.</p>
+      <button onclick="showInfo('AI & ML Internship')">More Info</button>
+    </div>
+
+    <div class="card">
+      <h3>Cyber Security Internship</h3>
+      <p>Explore ethical hacking, network security, and penetration testing.</p>
+      <button onclick="showInfo('Cyber Security Internship')">More Info</button>
+    </div>
+
+    <div class="card">
+      <h3>Data Science Internship</h3>
+      <p>Analyze and visualize datasets using Python and Power BI.</p>
+      <button onclick="showInfo('Data Science Internship')">More Info</button>
+    </div>
+  </div>
+
+  <script>
+    function showInfo(internshipName) {
+      alert("You selected the " + internshipName + " program.\nVisit your department portal for application details.");
+    }
+  </script>
+</body>
+</html>

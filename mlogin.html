@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mechanical Internship Dashboard</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #0047ab;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+    }
+
+    .card h3 {
+      color: #0047ab;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #0047ab;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #002f73;
+    }
+
+    .info-popup {
+      display: none;
+      margin-top: 15px;
+      background-color: #e0f0ff;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Mechanical Engineering Internship Dashboard</header>
+
+  <div class="container">
+    <div class="card">
+      <h3>CAD Design Internship</h3>
+      <p>Work with AutoCAD & SolidWorks on real-world product design projects.</p>
+      <button onclick="toggleInfo(this)">More Info</button>
+      <div class="info-popup">
+        Duration: 6–8 weeks<br>
+        Location: Remote/On-site<br>
+        Stipend: ₹5,000–₹10,000<br>
+        Skills: CAD, 3D Modeling, Drafting
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Manufacturing Internship</h3>
+      <p>Learn about CNC machines, production processes, and quality control.</p>
+      <button onclick="toggleInfo(this)">More Info</button>
+      <div class="info-popup">
+        Duration: 8–12 weeks<br>
+        Location: Factory / Industrial Site<br>
+        Stipend: ₹6,000–₹12,000<br>
+        Skills: Manufacturing, Production Planning, Process Optimization
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Automobile Engineering Internship</h3>
+      <p>Hands-on experience in vehicle design and engine systems.</p>
+      <button onclick="toggleInfo(this)">More Info</button>
+      <div class="info-popup">
+        Duration: 6–10 weeks<br>
+        Location: On-site<br>
+        Stipend: ₹7,000–₹15,000<br>
+        Skills: Vehicle Design, Engines, CAD
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Energy & HVAC Internship</h3>
+      <p>Work on thermal systems, HVAC design, and renewable energy projects.</p>
+      <button onclick="toggleInfo(this)">More Info</button>
+      <div class="info-popup">
+        Duration: 6–8 weeks<br>
+        Location: Remote/On-site<br>
+        Stipend: ₹5,000–₹10,000<br>
+        Skills: Thermal Analysis, HVAC, Energy Systems
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleInfo(button) {
+      const popup = button.nextElementSibling;
+      if (popup.style.display === 'none' || popup.style.display === '') {
+        popup.style.display = 'block';
+      } else {
+        popup.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>
