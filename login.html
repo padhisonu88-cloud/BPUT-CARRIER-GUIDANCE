@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & SignUp - BPUT Career Guidance</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('https://upload.wikimedia.org/wikipedia/en/e/ec/Official_logo_of_Biju_Patanaik_University_of_Technology.png');
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      backdrop-filter: blur(5px);
+    }
+
+    .form-box {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 10px;
+      width: 350px;
+    }
+
+    .form-box h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #ffcc00;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin: 15px 0;
+      background-color: #ff6600;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e65c00;
+    }
+
+    .toggle {
+      text-align: center;
+      margin-top: 10px;
+      cursor: pointer;
+      color: #ffcc00;
+    }
+
+    .toggle:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+   <div class="optin">
+       <a href="login.html"></a></div>
+  <div class="container">
+    <!-- SignUp Form -->
+    <div class="form-box" id="signup-box" method="post" action="https://formspree.io/f/mjkaqgzy">
+      
+      <h2>Signup</h2>
+      <input type="text" id="signup-name" placeholder="Username" required>
+      <input type="password" id="signup-password" placeholder="Password" required>
+      <button onclick="signup()">Signup</button>
+      <p class="toggle" onclick="showLogin()">Already have an account? Login</p>
+    </div>
+
+    <!-- Login Form -->
+    <div class="form-box" id="login-box" style="display:none;">
+      <h2>Login</h2>
+      <input type="text" id="login-name" placeholder="Username" required>
+      <input type="password" id="login-password" placeholder="Password" required>
+      <button onclick="login()">Login</button>
+      <p class="toggle" onclick="showSignup()">Don't have an account? SignUp</p>
+    </div>
+  </div>
+
+  <script>
+    // Speak function (AI Talking Effect)
+    function speak(text) {
+      const msg = new SpeechSynthesisUtterance(text);
+      msg.lang = "en-IN"; // Indian English accent
+      msg.pitch = 1;
+      msg.rate = 1;
+      speechSynthesis.speak(msg);
+    }
+
+    // Toggle between forms
+    const showSignup = () => (
+      document.getElementById('signup-box').style.display = 'block',
+      document.getElementById('login-box').style.display = 'none'
+    );
+
+    const showLogin = () => (
+      document.getElementById('signup-box').style.display = 'none',
+      document.getElementById('login-box').style.display = 'block'
+    );
+
+    // Signup function - store user info in localStorage
+    function signup() {
+      const name = document.getElementById('signup-name').value;
+      const password = document.getElementById('signup-password').value;
+
+      (name === "" || password === "") &&
+        (alert("Please fill all fields."), speak("Please fill all fields."), false);
+
+      const user = { name, password };
+      localStorage.setItem("user", JSON.stringify(user));
+
+      alert("Signup successful! Please login.");
+      speak("Signup successful! Please login.");
+      showLogin();
+    }
+  
+    // Login function - no if/else
+    function login() {
+      const name = document.getElementById('login-name').value;
+      const password = document.getElementById('login-password').value;
+      const user = JSON.parse(localStorage.getItem("user")) || {};
+
+      const isValid = (name === user.name) && (password === user.password);
+
+      isValid && (
+        alert('Namaskar , redirecting you to homepage.'),
+        speak(' jay Jaganath,welcome  to land of god {odisha} .'),
+        setTimeout(() => window.location.href = "project.html", 3000)
+      );
+
+      !isValid && (
+        alert("Incorrect name or password."),
+        speak("Incorrect name or password.,plese try again.")
+      );
+    }
+  </script>
+</body>
+</html>
