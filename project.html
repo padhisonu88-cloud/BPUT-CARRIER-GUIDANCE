@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Career Guidance For BPUT Students to boost their career towords right path">
+  <title>Home Page</title>
+  <style>
+    /* Reset default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f6fa;
+      color: #333;
+    }
+
+    header {
+      background: #1e90ff;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin-bottom: 10px;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    button {
+      background: white;
+      color: #1e90ff;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #1e90ff;
+      color: white;
+      border: 1px solid white;
+    }
+
+    .search-bar {
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    .search-bar input {
+      width: 50%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 40px 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 250px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      border-radius: 12px 12px 0 0;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      padding: 10px;
+      color: #1e90ff;
+    }
+
+    footer {
+      background: #1e90ff;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 50px;
+    }
+    .search{
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to BPUT Career  Guidance</h1>
+    <nav>
+      <button onclick="showSection('home')">Home</button>
+      <button onclick="showSection('about')">About Us</button>
+      <button onclick="showSection('search')" ><a href="search.html">Search</a></button>
+      <button onclick="showSection('internships')"><a href="search2.html">Internship</a> </button>
+      <button onclick="showsection('aichartboard')"><a href="aichartboard.html">Aichartboard </a> </button>
+      <button onclick="showsection('Quize Test')"><a href="searchbar3.html">Quiz Test</a></button>
+      
+    </nav>
+    <div class="optin">
+       <a href="login.html"></a></div>
+  </header>
+  
+  <div class="search-bar" id="search" style="display: none;">
+    <input type="text" id="searchInput" placeholder="Search people...">
+  </div>
+
+  <section id="home" class="container">
+    <div class="card">
+      <img src="student five.jpeg" alt="peson2 ">
+      <h3></h3>
+    </div>
+
+    <div class="card">
+      <img src="student four.jpeg" alt="Person 2">
+      <h3></h3>
+    </div>
+
+    <div class="card">
+      <img src="student three.jpg" alt="Person 3">
+      <h3></h3>
+    </div>
+
+  </section>
+
+  <section id="about" class="container" style="display: none;">
+    <div>
+      <h2>About Us</h2>
+      <p style="max-width: 600px; margin: 20px auto; text-align: center;">
+        BPUT is the University which was to ensure a high quality of student coming out of techenical collage through a comman cariculam ans unifrom evaluation.
+        the displane include engineering and computer studies. Through such effort's, we aim to prapare some student not as slkiled professionals bit aslo as responsible global citizens.      
+       
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 My Website | All rights reserved
+  </footer>
+
+  <script>
+    function showSection(section) {
+      document.getElementById("home").style.display = "none";
+      document.getElementById("about").style.display = "none";
+      document.getElementById("search").style.display = "none";
+
+      document.getElementById(section).style.display = "flex";
+      if (section === "search") {
+        document.getElementById("search").style.display = "block";
+        document.getElementById("home").style.display = "flex";
+      }
+    }
+
+    // Simple search functionality
+    document.getElementById("searchInput").addEventListener("input", function() {
+      const query = this.value.toLowerCase();
+      const cards = document.querySelectorAll(".card");
+
+      cards.forEach(card => {
+        const name = card.querySelector("h3").textContent.toLowerCase();
+        card.style.display = name.includes(query) ? "block" : "none";
+      });
+    });
+  </script>
+
+</body>
+</html>
