@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BPUT Courses & Internship Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f6f8;
+    }
+
+    header {
+      background-color: #0047ab;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin: 20px;
+    }
+
+    .search-bar input {
+      width: 300px;
+      padding: 10px;
+      border-radius: 6px 0 0 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .search-bar button {
+      padding: 10px 15px;
+      border: none;
+      background-color: #0047ab;
+      color: white;
+      font-size: 16px;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+    }
+
+    .card h3 {
+      color: #0047ab;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .card button {
+      background-color: #0047ab;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .card button:hover {
+      background-color: #002f73;
+    }
+  </style>
+</head>
+<body>
+
+<header>BPUT Courses & Internship Portal</header>
+
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="Search by course/branch (CSE, ME, ECE...)">
+  <button onclick="searchCourses()">Search</button>
+</div>
+
+<div class="container" id="courseContainer">
+  <!-- CSE Course Card -->
+  <div class="card" data-course="CSE">
+    <h3>Computer Science & Engineering (CSE)</h3>
+    <p>Courses: Programming, AI, Data Structures, Web Development</p>
+    <button onclick="go "><a href="internship.html"><text style="color:red;">go to know more</text> </a></button>
+  </div>
+
+  <!-- Mechanical Engineering Card -->
+  <div class="card" data-course="ME">
+    <h3>Mechanical Engineering (ME)</h3>
+    <p>Courses: CAD, Thermal Engineering, Manufacturing, Robotics</p>
+    <button onclick="go"><a href="mechanical.html"><text style="color:red;">go to know more</text></a></button>
+  </div>
+
+  <!-- ECE Card -->
+  <div class="card" data-course="ECE">
+    <h3>Electronics & Communication (ECE)</h3>
+    <p>Courses: Circuits, Microcontrollers, Communication Systems</p>
+    <button onclick="alert('ECE internship page coming soon!')">View ECE Internship</button>
+  </div>
+
+  <!-- Other BPUT Courses -->
+  <div class="card" data-course="IT">
+    <h3>Information Technology (IT)</h3>
+    <p>Courses: Web Dev, Networking, Cloud Computing</p>
+    <button onclick="alert('IT internship page coming soon!')">View IT Internship</button>
+  </div>
+
+  <div class="card" data-course="EE">
+    <h3>Electrical Engineering (EE)</h3>
+    <p>Courses: Power Systems, Control, Electrical Machines</p>
+    <button onclick="alert('EE internship page coming soon!')">View EE Internship</button>
+  </div>
+</div>
+
+<script>
+  // Search courses function
+  function searchCourses() {
+    const input = document.getElementById('searchInput').value.toUpperCase();
+    const cards = document.querySelectorAll('#courseContainer .card');
+    cards.forEach(card => {
+      const course = card.getAttribute('data-course').toUpperCase();
+      if(course.includes(input) || input === '') {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

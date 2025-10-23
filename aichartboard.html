@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BPUT Career Guidance Chatbot</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.chat-container {
+    width: 500px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+h2 { text-align: center; color: #007bff; }
+#chat-box {
+    height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    resize: none;
+    height: 50px;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover { background-color: #0056b3; }
+.message { margin: 5px 0; }
+.user { text-align: right; color: blue; }
+.bot { text-align: left; color: green; }
+</style>
+</head>
+<body>
+<div class="chat-container">
+    <h2>BPUT Career Guidance</h2>
+    <div id="chat-box"></div>
+    <textarea id="user-input" placeholder="Ask about courses, internships, exams, or career..."></textarea>
+    <button id="send-btn">Send</button>
+</div>
+
+<script>
+const chatBox = document.getElementById('chat-box');
+const userInput = document.getElementById('user-input');
+const sendBtn = document.getElementById('send-btn');
+
+// Expanded keyword-response mapping
+const predefinedResponses = {
+    "courses": "BPUT offers Engineering courses like CSE, ECE, Mechanical, Civil, Electrical, IT, and Biotechnology. Check the official syllabus on BPUT's website for details.",
+    "internships": "BPUT students can apply for internships in IT companies, research labs, and government sectors. Popular platforms include Internshala, LinkedIn, and LetsIntern.",
+    "career": "BPUT graduates have opportunities in software development, civil services, mechanical industries, electronics, teaching, and research. Developing coding, communication, and problem-solving skills is highly recommended.",
+    "exams": "Students can prepare for competitive exams like GATE, UPSC, SSC, and campus placement exams. BPUT also organizes workshops and placement drives for skill enhancement.",
+    "placements": "BPUT has campus placement drives with companies like TCS, Infosys, Wipro, and Cognizant. Students should prepare resumes, aptitude tests, and interviews.",
+    "projects": "You can work on projects in AI, Machine Learning, Robotics, Web Development, and Embedded Systems. Good projects increase your chances of internship and placement.",
+    "events": "BPUT organizes tech fests, hackathons, and workshops. Participating helps in learning, networking, and enhancing your profile.",
+    "skills": "Important skills include programming (Python, Java, C++), data structures & algorithms, web development, communication, teamwork, and critical thinking.",
+    "default": "I can help with information on BPUT courses, internships, career options, exams, placements, projects, events, and skills. Please ask a specific question!"
+};
+
+sendBtn.addEventListener('click', () => {
+    const message = userInput.value.trim();
+    if (!message) return;
+    addMessage(message, 'user');
+    userInput.value = '';
+
+    const botReply = getBotReply(message);
+    setTimeout(() => addMessage(botReply, 'bot'), 500);
+});
+
+function addMessage(text, sender) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('message', sender);
+    msgDiv.textContent = text;
+    chatBox.appendChild(msgDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function getBotReply(msg) {
+    msg = msg.toLowerCase();
+    if (msg.includes("course") || msg.includes("program") || msg.includes("branch")) return predefinedResponses.courses;
+    if (msg.includes("internship") || msg.includes("intern")) return predefinedResponses.internships;
+    if (msg.includes("career") || msg.includes("job") || msg.includes("opportunity")) return predefinedResponses.career;
+    if (msg.includes("exam") || msg.includes("test") || msg.includes("gate") || msg.includes("competitive")) return predefinedResponses.exams;
+    if (msg.includes("placement") || msg.includes("company") || msg.includes("job drive")) return predefinedResponses.placements;
+    if (msg.includes("project") || msg.includes("mini project") || msg.includes("major project")) return predefinedResponses.projects;
+    if (msg.includes("event") || msg.includes("tech fest") || msg.includes("hackathon")) return predefinedResponses.events;
+    if (msg.includes("skill") || msg.includes("programming") || msg.includes("coding")) return predefinedResponses.skills;
+    return predefinedResponses.default;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BPUT Courses Dashboard</title>
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(180deg, #071027 0%, #071b2a 60%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 80%;
+  max-width: 800px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #06b6d4;
+}
+
+canvas {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.course-buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.course-btn {
+  background-color: #06b6d4;
+  color: #071027;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.course-btn:hover {
+  background-color: #0891b2;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>BPUT COURSE QUIZE TEST</h1>
+    <canvas id="courseChart"></canvas>
+
+    <div class="course-buttons">
+      <button onclick="go"><a href="Quize1.html"><text style="color:red">CSE</text></a></button>
+      <button onclick="go"><a href="Quize.html"><text style="color: red;">Mechanical Quiz</button>
+      <button class="course-btn" data-link="#">Civil Quiz</button>
+      <button class="course-btn" data-link="#">Electrical Quiz</button>
+    </div>
+  </div>
+
+</body>
+<script>
+  // Chart.js Bar Chart for BPUT Courses
+const ctx = document.getElementById('courseChart').getContext('2d');
+
+const courseChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['CSE', 'Mechanical', 'Civil', 'Electrical'],
+    datasets: [{
+      label: 'Total Students Enrolled (example data)',
+      data: [180, 120, 90, 70],
+      backgroundColor: [
+        '#06b6d4',
+        '#f97316',
+        '#10b981',
+        '#8b5cf6'
+      ],
+      borderRadius: 10
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'BPUT Branch Statistics',
+        color: 'white',
+        font: { size: 16 }
+      }
+    },
+    scales: {
+      x: {
+        ticks: { color: 'white' },
+        grid: { display: false }
+      },
+      y: {
+        ticks: { color: 'white' },
+        grid: { color: 'rgba(255,255,255,0.1)' }
+      }
+    }
+  }
+});
+
+// Redirect to quiz pages when buttons are clicked
+const buttons = document.querySelectorAll('.course-btn');
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const link = btn.getAttribute('data-link');
+    if (link && link !== '#') {
+      window.location.href = link;
+    } else {
+      alert('This course quiz is not added yet.');
+    }
+  });
+});
+</script>
+</html>

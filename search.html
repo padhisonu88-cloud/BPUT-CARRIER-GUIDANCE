@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Branch Skill Explorer</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #1d2671, #c33764);
+      color: white;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    select {
+      width: 80%;
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      margin-bottom: 20px;
+    }
+
+    .skill {
+      margin-bottom: 25px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: left;
+      transition: 0.3s;
+    }
+
+    .skill:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.02);
+    }
+
+    h2 {
+      color: #fff;
+      font-size: 1.3em;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      font-size: 0.9em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>Engineering Branch Skill Explorer</header>
+
+  <div class="container">
+    <h3>Select Your Branch</h3>
+    <select id="branchSelect" onchange="showSkills()">
+      <option value="">-- Select Branch --</option>
+      <option value="cse">Computer Science Engineering (CSE)</option>
+      <option value="ece">Electronics & Communication (ECE)</option>
+      <option value="me">Mechanical Engineering (ME)</option>
+      <option value="CE"> Civil Engineering(CE)</option>
+      <option value="EE"> Electrical Engineering(EE)</option>
+      <option value="ce"> Chemical Engineering(ce)</option>
+      
+
+    </select>
+
+    <div id="skillsContainer"></div>
+  </div>
+
+  <footer>© 2025 BPUT Skill Explorer | Created by Abinash</footer>
+
+  <script>
+    const branchData = {
+      cse: [
+        {
+          title: "Programming Languages",
+          desc: "Learn C, C++, Java, Python, and JavaScript for software development.",
+          video: "https://www.youtube.com/embed/3u1fu6f8Hto"
+        },
+        {
+          title: "Data Structures & Algorithms (DSA)",
+          desc: "Master arrays, linked lists, trees, graphs, and algorithmic logic.",
+          video: "https://www.youtube.com/embed/8hly31xKli0"
+        },
+        {
+          title: "Web Development",
+          desc: "Build front-end with HTML, CSS, JavaScript; backend with Node.js or Django.",
+          video: "https://www.youtube.com/embed/3qBXWUpoPHo"
+        },
+        {
+          title: "Machine Learning & AI",
+          desc: "Explore AI and ML with Python libraries like TensorFlow, PyTorch.",
+          video: "https://www.youtube.com/embed/ukzFI9rgwfU"
+        },
+        {
+          title: "Cybersecurity",
+          desc: "Learn how to protect data, encrypt communication, and secure systems.",
+          video: "https://www.youtube.com/embed/inWWhr5tnEA"
+        }
+      ],
+
+      ece: [
+        {
+          title: "Digital Electronics",
+          desc: "Learn logic gates, flip-flops, counters, multiplexers, and digital circuits.",
+          video: "https://www.youtube.com/embed/Q7D7M2_MhHE"
+        },
+        {
+          title: "Analog Circuits",
+          desc: "Study amplifiers, oscillators, filters, and their real-world applications.",
+          video: "https://www.youtube.com/embed/GkNJvZINSEY"
+        },
+        {
+          title: "Communication Systems",
+          desc: "Understand analog and digital communication, modulation, and demodulation.",
+          video: "https://www.youtube.com/embed/r8TqRz1lUuk"
+        },
+        {
+          title: "VLSI Design",
+          desc: "Study CMOS technology, circuit layout, and chip fabrication basics.",
+          video: "https://www.youtube.com/embed/lqyrzT5qR5E"
+        },
+        {
+          title: "Embedded Systems & IoT",
+          desc: "Learn hardware-software integration for smart devices and IoT.",
+          video: "https://www.youtube.com/embed/Qq_Nw-nQ0tg"
+        }
+      ],
+
+      me: [
+        {
+          title: "Engineering Mechanics",
+          desc: "Understand forces, moments, equilibrium, and basic mechanical systems.",
+          video: "https://www.youtube.com/embed/ybJxkU9v9_0"
+        },
+        {
+          title: "Thermodynamics",
+          desc: "Learn energy systems, laws of thermodynamics, and heat transfer principles.",
+          video: "https://www.youtube.com/embed/UpU5i7rZp1Y"
+        },
+        {
+          title: "Fluid Mechanics",
+          desc: "Understand fluid behavior, Bernoulli’s equation, and hydraulic systems.",
+          video: "https://www.youtube.com/embed/6DJYcDVuC2Q"
+        },
+        {
+          title: "Strength of Materials",
+          desc: "Study stress, strain, bending, and material properties for design.",
+          video: "https://www.youtube.com/embed/uykqgX1_JTw"
+        },
+        {
+          title: "Manufacturing Processes",
+          desc: "Learn machining, casting, welding, and modern manufacturing techniques.",
+          video: "https://www.youtube.com/embed/bQ0R4Zz8K3o"
+        },
+        {
+          title: "Theory of Machines",
+          desc: "Analyze kinematics, dynamics, and vibrations in mechanical systems.",
+          video: "https://www.youtube.com/embed/_lA2lm2I1Kc"
+        },
+        {
+          title: "Design of Machine Elements",
+          desc: "Design gears, shafts, bearings, and springs for mechanical systems.",
+          video: "https://www.youtube.com/embed/t4oRzG0mFLI"
+        },
+        {
+          title: "Automobile Engineering",
+          desc: "Understand vehicle dynamics, engines, transmission, and braking systems.",
+          video: "https://www.youtube.com/embed/z8f0p1YfOjk"
+        },
+        {
+          title: "CAD/CAM",
+          desc: "Learn 3D design and automation using tools like AutoCAD and SolidWorks.",
+          video: "https://www.youtube.com/embed/W6BZJh8x2FQ"
+        },
+        {
+          title: "Robotics & Automation",
+          desc: "Explore control, sensors, and automation in industrial robotics.",
+          video: "https://www.youtube.com/embed/Z6Vh8yQPGxI"
+        }
+      ]
+    };
+
+    function showSkills() {
+      const branch = document.getElementById("branchSelect").value;
+      const container = document.getElementById("skillsContainer");
+      container.innerHTML = "";
+
+      if (!branch) {
+        container.innerHTML = "<p>Please select a branch to view skills.</p>";
+        return;
+      }
+
+      if (branchData[branch]) {
+        branchData[branch].forEach(skill => {
+          const skillDiv = document.createElement("div");
+          skillDiv.className = "skill";
+          skillDiv.innerHTML = `
+            <h2>${skill.title}</h2>
+            <p>${skill.desc}</p>
+            <iframe src="${skill.video}" allowfullscreen></iframe>
+          `;
+          container.appendChild(skillDiv);
+        });
+      } else {
+        container.innerHTML = "<p>Skills data for this branch is coming soon!</p>";
+      }
+    
+    function goBack(){
+      window.location.href="project.html";
+    }
+  }
+  </script>
+</body>
+</html>
