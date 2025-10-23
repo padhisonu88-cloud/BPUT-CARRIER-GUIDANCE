@@ -1,8 +1,9 @@
-# BPUT-CAREER-GUIDANCE
+# BPUT CAREER GUIDANCE
 <br>
  Problem Statment-AI-Powered Career Recommendation and Internship Matching Platform for BPUT Students
 <br>
-Solution-
+Solution-An AI-based web platform that analyzes student profiles
+<br>
 Leader-Malay Kumar Mallik
 <br>
 Member-Abinash Mohanty
